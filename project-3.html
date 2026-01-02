@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autonomous Line-Following Robot - Julian Kaminski</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .project-page {
+        min-height: 100vh;
+        padding: 2rem;
+        background-color: var(--bg-primary);
+      }
+
+      .project-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .project-header {
+        margin-bottom: 3rem;
+      }
+
+      .project-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+      }
+
+      .back-button:hover {
+        gap: 1rem;
+      }
+
+      .slider-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto 3rem;
+        background-color: var(--bg-secondary);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .slider {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--bg-tertiary);
+      }
+
+      .slide {
+        display: none;
+        width: 100%;
+        height: 100%;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      .slide.active {
+        display: block;
+      }
+
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .slide-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(14, 165, 233, 0.7);
+        color: white;
+        border: none;
+        padding: 1rem;
+        cursor: pointer;
+        font-size: 1.5rem;
+        transition: var(--transition);
+        z-index: 10;
+      }
+
+      .slide-nav:hover {
+        background: rgba(14, 165, 233, 1);
+      }
+
+      .prev {
+        left: 1rem;
+      }
+
+      .next {
+        right: 1rem;
+      }
+
+      .slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1rem;
+        background-color: var(--bg-secondary);
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: var(--border-color);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .dot.active {
+        background-color: var(--primary-color);
+      }
+
+      .project-details {
+        background-color: var(--bg-secondary);
+        padding: 2rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+      }
+
+      .project-details h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        text-align: left;
+      }
+
+      .project-details p {
+        margin-bottom: 1rem;
+        line-height: 1.8;
+      }
+
+      .tech-stack {
+        margin-top: 1.5rem;
+      }
+
+      .tech-stack h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .tech-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .tech-items span {
+        background-color: rgba(14, 165, 233, 0.15);
+        color: var(--primary-color);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .project-header h1 {
+          font-size: 2rem;
+        }
+
+        .slider {
+          height: 300px;
+        }
+
+        .slide-nav {
+          padding: 0.75rem;
+          font-size: 1.2rem;
+        }
+
+        .project-details {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">Julian Kaminski</div>
+        <ul class="nav-menu">
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#work" class="nav-link">Work</a></li>
+          <li>
+            <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+          </li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+          <li>
+            <a href="#" class="nav-link cv-btn"
+              ><i class="fas fa-download"></i> Download CV</a
+            >
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Project Page -->
+    <div class="project-page">
+      <div class="project-container">
+        <a href="index.html#work" class="back-button">
+          <i class="fas fa-arrow-left"></i> Back to Projects
+        </a>
+
+        <div class="project-header">
+          <h1>Autonomous Line-Following Robot</h1>
+        </div>
+
+        <!-- Image Slider -->
+        <div class="slider-container">
+          <div class="slider">
+            <div class="slide active">
+              <img src="images/project-3-1.jpg" alt="Robot Project 1" />
+            </div>
+            <div class="slide">
+              <img src="images/project-3-2.jpg" alt="Robot Project 2" />
+            </div>
+            <div class="slide">
+              <img src="images/project-3-3.jpg" alt="Robot Project 3" />
+            </div>
+            <div class="slide">
+              <img src="images/project-3-4.jpg" alt="Robot Project 4" />
+            </div>
+            <div class="slide">
+              <img src="images/project-3-5.jpg" alt="Robot Project 5" />
+            </div>
+            <button class="slide-nav prev" onclick="changeSlide(-1)">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slide-nav next" onclick="changeSlide(1)">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+          <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+          </div>
+        </div>
+
+        <!-- Project Details -->
+        <div class="project-details">
+          <h2>Project Overview</h2>
+          <p>
+            Built an autonomous line-following robot using Arduino, infrared
+            sensors, and a custom bracket during Academic Year 1. Responsible
+            for programming control logic in C++. The robot successfully
+            navigates marked lines using sensor feedback and algorithmic
+            decision-making.
+          </p>
+
+          <h2>Key Features</h2>
+          <ul style="color: var(--text-secondary); margin-left: 1.5rem">
+            <li>Dual infrared sensors for line detection</li>
+            <li>Arduino-based microcontroller system</li>
+            <li>Custom 3D-printed bracket design</li>
+            <li>Proportional control algorithm</li>
+            <li>Real-time sensor processing</li>
+            <li>Efficient power management</li>
+          </ul>
+
+          <h2>Technical Implementation</h2>
+          <p>
+            The robot uses two infrared sensors mounted on the front chassis to
+            detect the line. The Arduino processes sensor input and applies
+            proportional control to adjust motor speeds, enabling smooth curve
+            navigation. Custom C++ firmware optimizes sensor reading frequency
+            and response time.
+          </p>
+
+          <div class="tech-stack">
+            <h3>Technologies & Tools Used:</h3>
+            <div class="tech-items">
+              <span>Arduino</span>
+              <span>C++</span>
+              <span>Infrared Sensors</span>
+              <span>Microcontroller</span>
+              <span>Robotics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentSlideIndex = 1;
+
+      function changeSlide(n) {
+        showSlides((currentSlideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((currentSlideIndex = n));
+      }
+
+      function showSlides(n) {
+        const slides = document.getElementsByClassName("slide");
+        const dots = document.getElementsByClassName("dot");
+
+        if (n > slides.length) {
+          currentSlideIndex = 1;
+        }
+        if (n < 1) {
+          currentSlideIndex = slides.length;
+        }
+
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].classList.remove("active");
+        }
+        for (let i = 0; i < dots.length; i++) {
+          dots[i].classList.remove("active");
+        }
+
+        slides[currentSlideIndex - 1].classList.add("active");
+        dots[currentSlideIndex - 1].classList.add("active");
+      }
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
