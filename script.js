@@ -22,18 +22,18 @@ navLinks.forEach(link => {
 });
 
 // ========================================
-// SMOOTH SCROLL & ACTIVE NAV HIGHLIGHTING
+// SMOOTH SCROLL & ACTIVE NAV HIGHLIGHTINGasdasdasd
 // ========================================
 
 const sections = document.querySelectorAll('section');
 
 function updateActiveNav() {
     let current = '';
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        
+
         if (pageYOffset >= sectionTop - 200) {
             current = section.getAttribute('id');
         }
@@ -94,7 +94,7 @@ window.addEventListener('scroll', () => {
             scrollToTopBtn.className = 'scroll-to-top';
             scrollToTopBtn.innerHTML = '↑';
             document.body.appendChild(scrollToTopBtn);
-            
+
             scrollToTopBtn.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
@@ -112,7 +112,7 @@ window.addEventListener('scroll', () => {
 function parallax() {
     const scrollPosition = window.pageYOffset;
     const heroImage = document.querySelector('.profile-img');
-    
+
     if (heroImage) {
         heroImage.style.transform = `translateY(${scrollPosition * 0.5}px)`;
     }
@@ -163,10 +163,10 @@ const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         // Get form data
         const formData = new FormData(contactForm);
-        
+
         // Here you would send the data to your backend or email service
         // For now, just show a success message
         alert('Thank you for your message! I will get back to you soon.');

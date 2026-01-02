@@ -764,6 +764,45 @@ a:hover {
 }
 
 /* ========================================
+   SCROLL TO TOP BUTTON
+   ======================================== */
+
+.scroll-to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  background: var(--primary-color);
+  color: var(--bg-primary);
+  border: none;
+  padding: 0.6rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  z-index: 1000;
+  opacity: 0.95;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-3px);
+}
+
+.scroll-to-top:focus {
+  outline: 2px solid rgba(14, 165, 233, 0.5);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .scroll-to-top {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    padding: 0.5rem 0.7rem;
+    font-size: 1rem;
+  }
+}
+
+/* ========================================
    RESPONSIVE
    ======================================== */
 
