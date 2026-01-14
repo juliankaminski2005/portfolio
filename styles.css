@@ -471,6 +471,16 @@ a:hover {
   background-color: var(--bg-secondary);
 }
 
+/* For logos with a wider aspect ratio (e.g., Solv-X) */
+.company-logo.wide {
+  width: 80px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: contain;
+  background-color: transparent;
+  padding: 2px;
+}
+
 .experience-header h3 {
   font-size: 1.3rem;
   margin-bottom: 0.25rem;
