@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filament Re-wind Machine - Julian Kaminski</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Reuse project page styles from other project pages */
+      .project-page {
+        min-height: 100vh;
+        padding: 2rem;
+        background-color: var(--bg-primary);
+      }
+      .project-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .project-header {
+        margin-bottom: 2rem;
+      }
+      .project-header h1 {
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+      }
+      .slider-container {
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        background-color: var(--bg-secondary);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+      .slider {
+        position: relative;
+        width: 100%;
+        /* responsive aspect and max height for better image scaling */
+        aspect-ratio: 16/9;
+        max-height: 520px;
+        background-color: var(--bg-tertiary);
+      }
+      .slide {
+        display: none;
+        position: absolute;
+        inset: 0;
+      }
+      .slide.active {
+        display: block;
+      }
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .slide-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(14, 165, 233, 0.8);
+        color: #fff;
+        border: none;
+        padding: 0.85rem;
+        cursor: pointer;
+        font-size: 1.1rem;
+        z-index: 10;
+        border-radius: 6px;
+      }
+      .prev { left: 1rem; }
+      .next { right: 1rem; }
+      .slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1rem;
+        background: var(--bg-secondary);
+      }
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--border-color);
+        cursor: pointer;
+      }
+      .dot.active { background: var(--primary-color); }
+      .project-details {
+        background-color: var(--bg-secondary);
+        padding: 1.5rem;
+        border-radius: 8px;
+      }
+      .tech-items {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: 0.75rem;
+      }
+      .tech-items span {
+        background: rgba(14, 165, 233, 0.12);
+        color: var(--primary-color);
+        padding: 0.4rem 0.8rem;
+        border-radius: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">Julian Kaminski</div>
+        <ul class="nav-menu">
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#work" class="nav-link">Work</a></li>
+          <li>
+            <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+          </li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="project-page">
+      <div class="project-container">
+        <a href="index.html#work" class="back-button"
+          ><i class="fas fa-arrow-left"></i> Back to Projects</a
+        >
+
+        <div class="project-header">
+          <h1>Filament Re-wind Machine</h1>
+          <p style="color: var(--text-secondary); margin-top: 0.5rem">
+            Design, FEA validation and manufacture of a high-reliability
+            filament re-wind system.
+          </p>
+        </div>
+
+        <div class="slider-container">
+          <div class="slider">
+            <div class="slide active">
+              <img
+                src="Captureesfsefr.PNG"
+                alt="Filament Re-wind - front view"
+              />
+            </div>
+            <div class="slide">
+              <img
+                src="Capturew3rw.PNG"
+                alt="Filament Re-wind - internal view"
+              />
+            </div>
+            <div class="slide">
+              <img
+                src="Capture123qwe.PNG"
+                alt="Filament Re-wind - internal view"
+              />
+            </div>
+            <button class="slide-nav prev" onclick="changeSlide(-1)">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slide-nav next" onclick="changeSlide(1)">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+          <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+          </div>
+        </div>
+
+        <div class="project-details">
+          <h2>Overview</h2>
+          <p>
+            This project focused on the design and manufacture of a 3D printer
+            filament re-wind machine that slashed material costs by roughly 60%
+            by transferring bulk, third-party filament onto proprietary,
+            Sindoh-compatible spools. Driven by a single AC induction motor and
+            a 120:1 reduction gearhead, the system simultaneously ran spool
+            rotation, a reciprocating filament guide, and a spring-loaded
+            tension control mechanism.
+          </p>
+
+          <h2>Engineering & Compliance</h2>
+          <p>
+            To ensure complete operational reliability and compliance with EU
+            Machinery Regulations, critical components like the worm gears and
+            cantilevered spool shafts were structurally validated using ANSYS
+            finite element analysis (FEA) alongside physical prototyping.
+          </p>
+
+          <h2>Control & Accessibility</h2>
+          <p>
+            Complementing the machine was an inclusive, height-adjustable mobile
+            workbench designed to hold four full and four empty spools while
+            housing a standard electrical enclosure. The station integrated an
+            automated low-voltage control suite—managed by an Arduino and a
+            micro:bit—which featured an ultrasonic sensor to auto-stop the motor
+            when a spool was full, electronic safety switches, color-coded LED
+            indicators, and voice-activated height adjustments to maximize
+            accessibility for all operators.
+          </p>
+
+          <div class="tech-stack">
+            <h3>Technologies & Tools</h3>
+            <div class="tech-items">
+              <span>SolidWorks</span>
+              <span>ANSYS (FEA)</span>
+              <span>Arduino</span>
+              <span>micro:bit</span>
+              <span>Mechanical Design</span>
+              <span>Manufacturing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentSlideIndex = 1;
+      function changeSlide(n) {
+        showSlides((currentSlideIndex += n));
+      }
+      function currentSlide(n) {
+        showSlides((currentSlideIndex = n));
+      }
+      function showSlides(n) {
+        const slides = document.getElementsByClassName("slide");
+        const dots = document.getElementsByClassName("dot");
+        if (n > slides.length) currentSlideIndex = 1;
+        if (n < 1) currentSlideIndex = slides.length;
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].classList.remove("active");
+        }
+        for (let i = 0; i < dots.length; i++) {
+          dots[i].classList.remove("active");
+        }
+        slides[currentSlideIndex - 1].classList.add("active");
+        dots[currentSlideIndex - 1].classList.add("active");
+      }
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
