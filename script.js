@@ -128,7 +128,7 @@ const cvBtn = document.querySelector('.cv-btn');
 if (cvBtn) {
     cvBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        window.open('resume.pdf', '_blank');
+        window.open(encodeURI('Julian_Kaminski_CV (4).pdf'), '_blank');
     });
 }
 
